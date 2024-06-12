@@ -65,7 +65,7 @@ public class SnacksRestController {
         }
     }
 
-    @PostMapping("/itemID/{id}/{code}")
+    @PostMapping("/itemID/{id}/stock/{code}")
     public EntityModel<Map<String, Integer>> getStock(@PathVariable String id, @PathVariable String code) {
         if (checkCode(code)) {
             Map<String, Integer> stock = snackRepository.findStock(id);
