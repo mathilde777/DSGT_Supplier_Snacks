@@ -162,4 +162,15 @@ public class SnackRepository {
         }
     }
 
+    public void releaseReservation(String id) {
+        Iterator<Reservation> iterator = reservations.iterator();
+        while (iterator.hasNext()) {
+            Reservation reservation = iterator.next();
+            if (reservation.getReservationId() == id) {
+                iterator.remove();
+                stock.put(reservation.getSnackId(), stock.getOrDefault(reservation.getSnackId(), 0) + 1);
+            }
+        }
+    }
+
 }

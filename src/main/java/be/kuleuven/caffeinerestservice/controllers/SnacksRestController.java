@@ -28,7 +28,7 @@ public class SnacksRestController {
         this.snackRepository = snackRepository;
     }
 
-    @GetMapping("/snacks/{code}")
+    @GetMapping("/items/{code}")
     public CollectionModel<EntityModel<Snack>> getAll(@PathVariable String code) {
         if (checkCode(code)) {
             Collection<Snack> snacks = snackRepository.getSnackOptions();
@@ -44,7 +44,7 @@ public class SnacksRestController {
         }
     }
 
-    @GetMapping("/snackId/{id}/{code}")
+    @GetMapping("/itemId/{id}/{code}")
     public EntityModel<Snack> getItem(@PathVariable String id, @PathVariable String code) {
         if (checkCode(code)) {
             Snack d = snackRepository.findSnack(id).orElseThrow(() -> new DrinkNotFoundException(id));
@@ -65,7 +65,7 @@ public class SnacksRestController {
         }
     }
 
-    @PostMapping("/snackID/{id}/{code}")
+    @PostMapping("/itemID/{id}/{code}")
     public EntityModel<Map<String, Integer>> getStock(@PathVariable String id, @PathVariable String code) {
         if (checkCode(code)) {
             Map<String, Integer> stock = snackRepository.findStock(id);
@@ -76,7 +76,7 @@ public class SnacksRestController {
         }
     }
 
-    @PostMapping("/snackId/{id}/reserve/{reservationId}/{code}")
+    @PostMapping("/itemId/{id}/reserve/{reservationId}/{code}")
     public ResponseEntity<String> reserve(@PathVariable String id, @PathVariable String reservationId, @PathVariable String code) {
         if (checkCode(code)) {
             boolean success = snackRepository.reserveItem(id, reservationId);
@@ -92,7 +92,7 @@ public class SnacksRestController {
         }
     }
 
-    @PostMapping("/snackId/{reservationId}/buy/{code}")
+    @PostMapping("/buy/{reservationId}/{code}")
     public ResponseEntity<String> buy(@PathVariable String reservationId, @PathVariable String code) {
         if (checkCode(code)) {
             boolean success = snackRepository.buyReservation(reservationId);
@@ -106,7 +106,7 @@ public class SnacksRestController {
         }
     }
 
-    @PostMapping("/snackId/{id}/checkReservation/{reservationId}/{code}")
+    @PostMapping("/itemId/{id}/checkReservation/{reservationId}/{code}")
     public ResponseEntity<Boolean> checkReservation(@PathVariable String id, @PathVariable String reservationId, @PathVariable String code) {
         if (checkCode(code)) {
             boolean exists = snackRepository.checkReservation(reservationId, id);
@@ -116,7 +116,17 @@ public class SnacksRestController {
         }
     }
 
-    @PostMapping("/snackId/{id}/checkAvailability/{code}")
+    @PostMapping("/releaseReservation/{reservationId}/{code}")
+    public void releaseReservation( @PathVariable String reservationId, @PathVariable String code) {
+        if (checkCode(code)) {
+            snackRepository.releaseReservation(reservationId);
+
+        } else {
+            throw new CodeNotCorrectException(code);
+        }
+    }
+
+    @PostMapping("/itemId/{id}/checkAvailability/{code}")
     public ResponseEntity<Boolean> checkAvailability(@PathVariable String id, @PathVariable String code) {
         if (checkCode(code)) {
             boolean available = snackRepository.checkAvailability(id);
