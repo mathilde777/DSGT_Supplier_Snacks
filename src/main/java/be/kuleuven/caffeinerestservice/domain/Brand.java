@@ -2,10 +2,9 @@ package be.kuleuven.caffeinerestservice.domain;
 
 public enum Brand {
 
-    NALU("nalu"),
-    REDBULL("redbull"),
-    MONSTER("monster"),
-    STARBUCKS("starbucks");
+    AIKI("aiki"),
+    LAYS("lays");
+
     private final String value;
 
     Brand(String v) {
