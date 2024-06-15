@@ -15,13 +15,13 @@ public class SnackRepository {
 
     @PostConstruct
     public void initData() {
-        Snack n1 = new Snack("Ndjb0HZE6s3uxnAryOqA", "Nalu Original",
-                "An amazing new taste of Nalu Drinks with less calories and a boost of energy.",
-                Brand.AIKI, 250.0, 50, 1.08, 2);
+        Snack n1 = new Snack("Ndjb0HZE6s3uxnAryOqA", "Aiki orignal",
+                "A warm, flavorful bowl of instant noodles",
+                Brand.AIKI, 250.0, 300, 2.50, 2);
 
-        Snack n2 = new Snack("ep3FAfq9y06EYXx14Mt0", "Nalu Passion",
-                "Introducing Nalu Passion, a refreshing, fruity blend of blueberry, pear, blackberry, peach, açai, Goji berries and mangosteen for the most passionate among us.",
-                Brand.LAYS, 250.0, 50, 1.41, 1);
+        Snack n2 = new Snack("ep3FAfq9y06EYXx14Mt0", "Lays Orignal",
+                "Crispy and crunchy potato chips",
+                Brand.LAYS, 250.0, 200, 1.00, 1);
 
 
 
