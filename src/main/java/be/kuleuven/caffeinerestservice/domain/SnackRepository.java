@@ -15,21 +15,33 @@ public class SnackRepository {
 
     @PostConstruct
     public void initData() {
-        Snack n1 = new Snack("Ndjb0HZE6s3uxnAryOqA", "Aiki orignal",
-                "A warm, flavorful bowl of instant noodles",
-                Brand.AIKI, 250.0, 300, 2.50, 2);
+        Snack n1 = new Snack("qw1Bb1rjrEM2bDJfo6W3", "Aiki Chicken",
+                "Aïki chicken, the winner among noodles in a handy cup to take with you. Add boiling water, wait 3 minutes and you're done!",
+                Brand.AIKI, 250.0, 50, 2.48, 20);
 
-        Snack n2 = new Snack("ep3FAfq9y06EYXx14Mt0", "Lays Orignal",
-                "Crispy and crunchy potato chips",
-                Brand.LAYS, 250.0, 200, 1.00, 1);
+        Snack n2 = new Snack("W3ckU0jMdgjM0X0QK3xL", "Lay's Naturel",
+                "Delicious potatoes, crispy fried with a little salt, a true classic in its iconic red bag.",
+                Brand.LAYS, 250.0, 50, 3.78, 20);
 
+        Snack n3 = new Snack("zUCsIhTuwLjgP2o329jX", "Aiki Hot & Spicy",
+                "Aïki, the winner among noodles in a handy cup to take with you. Add boiling water, wait 3 minutes and you're done!",
+                Brand.AIKI, 250.0, 50, 2.09, 20);
 
+        Snack n4 = new Snack("2SvJNCAcCfjfnuVADpr2", "Lay's Paprika",
+                "A bit sweet and nicely spiced, a favorite for years.",
+                Brand.LAYS, 250.0, 50, 2.99, 20);
 
         snacks.put(n1.getId(), n1);
         stock.put(n1.getId(), n1.getStock());
 
         snacks.put(n2.getId(), n2);
         stock.put(n2.getId(), n2.getStock());
+
+        snacks.put(n3.getId(), n3);
+        stock.put(n3.getId(), n3.getStock());
+
+        snacks.put(n4.getId(), n4);
+        stock.put(n4.getId(), n4.getStock());
 
 
     }
