@@ -52,12 +52,11 @@ public class SnacksRestController {
         }
     }
 
-    @GetMapping("/stock/{code}")
-    public EntityModel<Map<String, Integer>> getAllStock(@PathVariable String code) {
+    @PostMapping("/stock/{code}")
+    public  ResponseEntity<String> getAllStock(@PathVariable String code) {
         if (checkCode(code)) {
-            Map<String, Integer> stock = snackService.getStock();
-            return EntityModel.of(stock,
-                    linkTo(methodOn(SnacksRestController.class).getAllStock(code)).withSelfRel());
+            snackService.getStock();
+            return ResponseEntity.ok("Stock have been printed to the console.");
         } else {
             throw new CodeNotCorrectException(code);
         }
@@ -79,7 +78,7 @@ public class SnacksRestController {
         if (checkCode(code)) {
             boolean success = snackService.reserveSnack(id, reservationId);
             if (success) {
-                Map<String, Integer> stock = snackService.findStock(id); // Get the updated stock
+                Map<String, Integer> stock = snackService.findStock(id);
                 String message = "Snack with ID " + id + " reserved successfully. " + stock.values() + " left in stock.";
                 return ResponseEntity.ok(message);
             } else {

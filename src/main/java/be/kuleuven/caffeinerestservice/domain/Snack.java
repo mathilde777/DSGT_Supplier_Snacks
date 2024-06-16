@@ -3,10 +3,9 @@ package be.kuleuven.caffeinerestservice.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+
 public class Snack {
 
-    @Id
     private String id;
     private String name;
     private String description;
@@ -16,7 +15,6 @@ public class Snack {
     private double price;
     private int stock; // Add stock field
 
-    // Constructors
     public Snack() {}
 
     public Snack(String id, String name, String description, Brand brand, double weight, int kcal, double price, int stock) {

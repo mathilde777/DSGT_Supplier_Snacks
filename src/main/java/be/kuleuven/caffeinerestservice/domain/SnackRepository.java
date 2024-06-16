@@ -49,6 +49,13 @@ public class SnackRepository {
     public Map<String, Integer> getStock() {
         return new HashMap<>(stock);
     }
+    public void printCurrentStock() {
+        System.out.println("Current stock list:");
+        stock.forEach((snackId, quantity) -> {
+            String snackName = snacks.get(snackId).getName();
+            System.out.println("Snack: " + snackName + " | Stock: " + quantity);
+        });
+    }
 
     public Map<String, Integer> findStock(String id) {
         int quantity = stock.getOrDefault(id, 0);
